@@ -1,9 +1,6 @@
 package com.igorofa.paperbank.paperbank;
 
 import android.app.Application;
-import android.os.SystemClock;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by x4b1d on 21/02/17.
@@ -21,7 +18,8 @@ public class PaperBankApp extends Application {
         super.onCreate();
 
         //This is just so cold launches take some time
-         SystemClock.sleep(TimeUnit.SECONDS.toMillis(3));
+         //SystemClock.sleep(TimeUnit.SECONDS.toMillis(3));
+
     }
 
     public static PaperBankApp getInstance(){

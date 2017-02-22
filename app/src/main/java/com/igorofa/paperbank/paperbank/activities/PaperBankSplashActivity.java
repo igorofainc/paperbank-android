@@ -16,7 +16,8 @@ public class PaperBankSplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, PaperBankGetStartedActivity.class);
+        // TODO: revert back to start PaperBackGetStartedActivity
+        Intent intent = new Intent(this, PaperBankMainActivity.class);
         Log.d(this.getLocalClassName(), "laoding");
         startActivity(intent);
         finish();
