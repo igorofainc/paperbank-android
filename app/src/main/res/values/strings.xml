@@ -3,4 +3,13 @@
     <string name="action_settings">Settings</string>
     <string name="s6_physics_2017">S6 Physics 2017</string>
     <string name="physics">#Physics</string>
+    <string name="get_started">Get Started</string>
+    <string name="revise_easily">Revise Easily</string>
+    
+    <string name="paragraph">
+        Paperbank is a Rwanda-based web platform holding \n
+        a collection of past papers from national exams \n
+        to class tests and assignments for all academic levels to \n
+        \t ease your revision journey, have fun!
+    </string>
 </resources>

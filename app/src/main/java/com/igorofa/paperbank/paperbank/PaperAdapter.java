@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 /**
  * Created by x4b1d on 22/02/17.
  */
@@ -39,11 +40,13 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperViewHolder> {
 
 class PaperViewHolder extends RecyclerView.ViewHolder{
     TextView paperTitle, paperTag;
+
     PaperViewHolder(View itemView) {
         super(itemView);
 
         paperTitle = (TextView) itemView.findViewById(R.id.paper_title);
         paperTag = (TextView) itemView.findViewById(R.id.paper_tag);
+
     }
 
     void setTextsView(){
