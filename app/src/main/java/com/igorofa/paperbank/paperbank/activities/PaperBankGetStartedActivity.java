@@ -16,6 +16,6 @@ public class PaperBankGetStartedActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_paper_bank_get_started);
+        setContentView(R.layout.activity_get_started_paper_bank);
     }
 }

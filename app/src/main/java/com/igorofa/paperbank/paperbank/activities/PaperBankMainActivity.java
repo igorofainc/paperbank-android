@@ -23,7 +23,7 @@ public class PaperBankMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paper_bank_main);
+        setContentView(R.layout.activity_main_paper_bank);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,6 +32,7 @@ public class PaperBankMainActivity extends AppCompatActivity {
         }
 
         TextView titleText = (TextView) toolbar.findViewById(R.id.toolbar_paper_bank_title);
+        titleText.setText(R.string.app_name);
         Typeface zwodrei = Typeface.createFromAsset(getAssets(), "fonts/zwodrei_bold_demo.ttf");
         titleText.setTypeface(zwodrei);
 

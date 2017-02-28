@@ -12,4 +12,7 @@
         to class tests and assignments for all academic levels to \n
         \t ease your revision journey, have fun!
     </string>
+    <string name="files">Files</string>
+    <string name="hint_upload_name">Name</string>
+    <string name="hint_upload_tags">Tags</string>
 </resources>

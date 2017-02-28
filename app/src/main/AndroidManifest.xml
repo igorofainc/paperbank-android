@@ -5,7 +5,7 @@
     <application
         android:name=".PaperBankApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,6 +25,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.PaperBankFilesActivity"
+                  android:label="@string/files"
+                  android:parentActivityName=".activities.PaperBankMainActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
+
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+              android:value=".activities.PaperBankMainActivity"/>
+
         </activity>
     </application>
 
