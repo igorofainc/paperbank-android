@@ -5,4 +5,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="action_bar_text_size">20sp</dimen>
     <dimen name="padding_text">16dp</dimen>
+    <dimen name="divider_left_right_margin">10dp</dimen>
+    <item name="divider_height" type="dimen">0.5dp</item>
 </resources>

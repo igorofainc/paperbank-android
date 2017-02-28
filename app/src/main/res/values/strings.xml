@@ -7,10 +7,10 @@
     <string name="revise_easily">Revise Easily</string>
     
     <string name="paragraph">
-        Paperbank is a Rwanda-based web platform holding \n
-        a collection of past papers from national exams \n
-        to class tests and assignments for all academic levels to \n
-        \t ease your revision journey, have fun!
+        Paperbank is a Rwanda-based web platform holding
+        a collection of past papers from national exams
+        to class tests and assignments for all academic levels to
+        ease your revision journey, have fun!
     </string>
     <string name="files">Files</string>
     <string name="hint_upload_name">Name</string>

@@ -8,4 +8,7 @@
     <color name="colorWhite">@android:color/white</color>
     <color name="colorBlack">@android:color/black</color>
     <color name="colorDividerLine">#46000000</color>
+
+    <color name="colorGetStartedHighlight">#FFAC1356</color>
+    <color name="textColor">#818181</color>
 </resources>
