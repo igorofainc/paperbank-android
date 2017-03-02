@@ -20,7 +20,7 @@
     </style>
 
     <style name="AppTheme.splashScreen" parent="AppTheme.FullScreen">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowBackground">@drawable/splash_screen_image</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
