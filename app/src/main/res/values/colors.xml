@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#AC1356</color>
-    <color name="colorPrimaryDark">#690833</color>
+    <color name="colorPrimaryDark">#19AC1356</color>
     <color name="colorAccent">#ab1566</color>
 
     <color name="backup_colorAccent">#FF4081</color>
@@ -11,4 +11,7 @@
 
     <color name="colorGetStartedHighlight">#FFAC1356</color>
     <color name="textColor">#818181</color>
+
+    <color name="colorControlHighlight">?android:colorControlHighlight</color>
+    <color name="colorControlHighlight_below_21">#1F000000</color>
 </resources>
