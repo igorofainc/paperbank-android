@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,25 +10,47 @@
 
     <include layout="@layout/toolbar"/>
 
-    <include layout="@layout/content_paper_bank_main" />
+    <include layout="@layout/content_paper_bank_main"/>
+
+    <com.igorofa.paperbank.paperbank.views.ToggleFloatingActionButton
+        android:id="@+id/floating_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/fab_color_tint"
+        app:borderWidth="0.5dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/ripple_fab_color"
+        app:srcCompat="@drawable/ic_add_white"/>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        app:srcCompat="@drawable/ic_arrow_upward_white_24"
-        app:fabSize="normal"
-
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/mini_fab_margin"
+        android:translationY="@dimen/mini_fab_first_translation_y"
+        app:backgroundTint="@color/fab_color_tint"
+        app:borderWidth="0.5dp"
         app:elevation="6dp"
-        app:pressedTranslationZ="12dp"/>
+        app:fabSize="mini"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/ripple_fab_color"
+        app:srcCompat="@drawable/ic_arrow_upward_white_24"/>
 
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/fab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@drawable/fab_background_circle"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_white"/>
-
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/mini_fab_margin"
+        android:translationY="-120dp"
+        app:backgroundTint="@color/fab_color_tint"
+        app:borderWidth="0.5dp"
+        app:elevation="6dp"
+        app:fabSize="mini"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/ripple_fab_color"
+        app:srcCompat="@drawable/ic_watch_later"/>
 </android.support.design.widget.CoordinatorLayout>

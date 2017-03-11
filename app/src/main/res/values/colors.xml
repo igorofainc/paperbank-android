@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#19AC1356</color>
     <color name="colorAccent">#ab1566</color>
 
+    <color name="fab_color_tint">#FFAC1356</color>
+    <color name="ripple_fab_color">#42AC1356</color>
     <color name="backup_colorAccent">#FF4081</color>
     <color name="colorWhite">@android:color/white</color>
     <color name="colorBlack">@android:color/black</color>
