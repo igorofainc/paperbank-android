@@ -27,6 +27,7 @@
         app:srcCompat="@drawable/ic_add_white"/>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/upload_file_floating_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -41,6 +42,7 @@
         app:srcCompat="@drawable/ic_arrow_upward_white_24"/>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/recent_files_floating_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

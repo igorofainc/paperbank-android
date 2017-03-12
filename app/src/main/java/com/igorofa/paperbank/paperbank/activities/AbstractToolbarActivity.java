@@ -12,11 +12,17 @@ import com.igorofa.paperbank.paperbank.PaperAdapter;
 import com.igorofa.paperbank.paperbank.R;
 
 /**
+ * This is abstract activity class that sets up the toolbar and recyclerview for their child classes
  * Created by laz on 9/03/17.
  */
 
 public abstract class AbstractToolbarActivity extends AppCompatActivity {
 
+    /**
+     * Child activities that extend this abstract class have to implement this method
+     * and return the layout file which has a toolbar (R.id.toolbar) and recyclerview (R.id.paper_bank_main_recycler_view)
+     * @return int
+     */
     @LayoutRes
     public abstract int getLayout();
 

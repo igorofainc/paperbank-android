@@ -2,6 +2,7 @@ package com.igorofa.paperbank.paperbank.activities;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,8 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
     PublishSubject<View> fabClicksPublish;
     CompositeDisposable mCompositeDisposable;
     ToggleFloatingActionButton mainFloatingActionButton;
+
+    FloatingActionButton uploadFileFloatingActionButton, recentFilesFloatingActionButton;
 
     @Override
     public int getLayout() {
@@ -41,6 +44,9 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
         mCompositeDisposable = new CompositeDisposable();
 
         mainFloatingActionButton = (ToggleFloatingActionButton) findViewById(R.id.floating_button);
+
+        uploadFileFloatingActionButton = (FloatingActionButton) findViewById(R.id.upload_file_floating_button);
+        recentFilesFloatingActionButton = (FloatingActionButton) findViewById(R.id.recent_files_floating_button);
     }
 
     @Override
@@ -55,6 +61,11 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
                     .subscribe(aBoolean -> {
                         if (aBoolean){
                             Toast.makeText(this, "The Fab is Open", Toast.LENGTH_SHORT).show();
+                            uploadFileFloatingActionButton.setVisibility(View.VISIBLE);
+                            recentFilesFloatingActionButton.setVisibility(View.VISIBLE);
+                        }else {
+                            uploadFileFloatingActionButton.setVisibility(View.GONE);
+                            recentFilesFloatingActionButton.setVisibility(View.GONE);
                         }
                     }));
         }
