@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <com.igorofa.paperbank.paperbank.views.HintTextBoxView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:text="Files"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_gravity="center_vertical"/>
+    <!--<TextView-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:text="Files"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:padding="5dp"-->
+        <!--android:background="@drawable/round_rect"/>-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/upload_file_floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/fab_color_tint"
+        app:borderWidth="0.5dp"
+        app:elevation="6dp"
+        app:fabSize="mini"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/ripple_fab_color"
+        app:srcCompat="@drawable/ic_arrow_upward_white_24"
+        tools:visibility="visible"/>
+</merge>

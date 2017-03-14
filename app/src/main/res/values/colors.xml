@@ -16,4 +16,6 @@
 
     <color name="colorControlHighlight">?android:colorControlHighlight</color>
     <color name="colorControlHighlight_below_21">#1F000000</color>
+
+    <color name="hintBoxColor">#42000000</color>
 </resources>

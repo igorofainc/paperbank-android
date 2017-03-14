@@ -3,4 +3,14 @@
     <declare-styleable name="ToggleFloatingActionButton">
         <attr name="stateOpened" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="HintTextBoxView">
+        <attr name="text" format="string" />
+        <attr name="textSize" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="FloatingActionButtonWithHintText">
+        <attr name="hintText" format="string" />
+        <attr name="srcActionCompat" format="integer"/>
+    </declare-styleable>
 </resources>

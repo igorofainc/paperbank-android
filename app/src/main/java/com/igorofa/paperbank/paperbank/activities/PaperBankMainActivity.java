@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.igorofa.paperbank.paperbank.R;
+import com.igorofa.paperbank.paperbank.views.FloatingActionButtonWithHintText;
 import com.igorofa.paperbank.paperbank.views.ToggleFloatingActionButton;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -22,7 +23,8 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
     CompositeDisposable mCompositeDisposable;
     ToggleFloatingActionButton mainFloatingActionButton;
 
-    FloatingActionButton uploadFileFloatingActionButton, recentFilesFloatingActionButton;
+    FloatingActionButton uploadFileFloatingActionButton;
+    FloatingActionButtonWithHintText recentFilesFloatingActionButton;
 
     @Override
     public int getLayout() {
@@ -46,7 +48,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
         mainFloatingActionButton = (ToggleFloatingActionButton) findViewById(R.id.floating_button);
 
         uploadFileFloatingActionButton = (FloatingActionButton) findViewById(R.id.upload_file_floating_button);
-        recentFilesFloatingActionButton = (FloatingActionButton) findViewById(R.id.recent_files_floating_button);
+        recentFilesFloatingActionButton = (FloatingActionButtonWithHintText) findViewById(R.id.recent_files_floating_button);
     }
 
     @Override

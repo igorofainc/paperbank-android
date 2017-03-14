@@ -41,18 +41,14 @@
         app:rippleColor="@color/ripple_fab_color"
         app:srcCompat="@drawable/ic_arrow_upward_white_24"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.igorofa.paperbank.paperbank.views.FloatingActionButtonWithHintText
         android:id="@+id/recent_files_floating_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/mini_fab_margin"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp"
         android:translationY="-120dp"
-        app:backgroundTint="@color/fab_color_tint"
-        app:borderWidth="0.5dp"
-        app:elevation="6dp"
-        app:fabSize="mini"
-        app:pressedTranslationZ="12dp"
-        app:rippleColor="@color/ripple_fab_color"
-        app:srcCompat="@drawable/ic_watch_later"/>
+        app:hintText="Files"
+        app:srcActionCompat="@drawable/ic_watch_later"/>
 </android.support.design.widget.CoordinatorLayout>
