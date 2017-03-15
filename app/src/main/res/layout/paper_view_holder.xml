@@ -40,9 +40,11 @@
         </LinearLayout>
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/holder_paper_view_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="end|center_vertical"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:padding="8dp"
             app:srcCompat="@drawable/ic_paper"/>
     </FrameLayout>

@@ -10,9 +10,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.igorofa.paperbank.paperbank.R;
+
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by laz on 13/03/17.
@@ -24,6 +28,10 @@ public class FloatingActionButtonWithHintText extends LinearLayout {
 
     private String hintText;
     private Drawable imageSrcRes;
+
+    // OnClickListener for the floating action Button
+    PublishSubject<View> hintFabClickListener;
+
 
     public FloatingActionButtonWithHintText(Context context) {
         super(context);
@@ -69,6 +77,19 @@ public class FloatingActionButtonWithHintText extends LinearLayout {
         mFloatingActionButton.setImageDrawable(imageSrcRes);
 
         a.recycle();
+
+        hintFabClickListener = PublishSubject.create();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        mFloatingActionButton.setOnClickListener(v -> hintFabClickListener.onNext(v));
+    }
+
+    // use this observable to subscribe to the onclick listener
+    public Observable<View> getFabOnClickObservable(){
+        return hintFabClickListener;
     }
 
     public HintTextBoxView getHintTextBoxView() {
