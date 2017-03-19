@@ -51,7 +51,7 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.PaperViewHol
 
     @Override
     public PaperViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View adapterItemView = LayoutInflater.from(mContext).inflate(R.layout.paper_view_holder, parent, false);
+        View adapterItemView = LayoutInflater.from(mContext).inflate(R.layout.view_holder_main_paper, parent, false);
         return new PaperViewHolder(adapterItemView);
     }
 

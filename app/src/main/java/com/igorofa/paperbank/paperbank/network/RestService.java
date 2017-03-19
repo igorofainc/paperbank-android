@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
@@ -35,10 +37,13 @@ public class RestService {
     //    private final String TEST_PDF_URL = "http://www.pdf995.com/samples/pdf.pdf";
 //    private final String TEST_PDF_URL = "http://www.google.com";
     private final String BASE_URL = "http://paperdev.herokuapp.com/";
-    Scheduler mScheduler;
+    private static Scheduler mScheduler;
 
     private RestService() {
+        int threadCount = Runtime.getRuntime().availableProcessors();
+        ExecutorService threadPoolExecutor = Executors.newFixedThreadPool(threadCount);
 
+        mScheduler = Schedulers.from(threadPoolExecutor);
     }
 
     public static synchronized RestService getInstance() {
@@ -151,7 +156,7 @@ public class RestService {
         Log.d(RestService.class.getSimpleName(), url);
         return getDownloadsRetrofit(progress).create(PaperBankApi.class)
                 .downloadPdfFile(url)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(mScheduler)
                 .flatMap(bodyResponse -> saveWholeFile(bodyResponse, file))
                 .map(file1 -> Log.d(Thread.currentThread().getName(), file.getAbsolutePath())) // purely for testing file download is on what thread
                 .ignoreElements()
