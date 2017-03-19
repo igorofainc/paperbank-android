@@ -50,5 +50,5 @@
         android:paddingLeft="4dp"
         android:translationY="-120dp"
         app:hintText="Files"
-        app:srcActionCompat="@drawable/ic_watch_later"/>
+        app:srcActionCompat="@drawable/ic_recent_files"/>
 </android.support.design.widget.CoordinatorLayout>

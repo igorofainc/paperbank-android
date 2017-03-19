@@ -3,6 +3,9 @@ package com.igorofa.paperbank.paperbank;
 import android.app.Application;
 import android.os.SystemClock;
 
+import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityViewModel;
+import com.igorofa.paperbank.paperbank.viewModels.PBRecentActivityViewModel;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,10 +13,10 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class PaperBankApp extends Application {
-    private static PaperBankApp sPaperBankApp;
+    private PBDataModel mDataModel;
 
     public PaperBankApp(){
-        sPaperBankApp = this;
+        mDataModel = new PBDataModel();
     }
 
     @Override
@@ -25,7 +28,15 @@ public class PaperBankApp extends Application {
 
     }
 
-    public static PaperBankApp getInstance(){
-        return sPaperBankApp;
+    private PBDataModel getDataModel() {
+        return mDataModel;
+    }
+
+    public PBMainActivityViewModel getMainActivityViewModel() {
+        return new PBMainActivityViewModel(getDataModel());
+    }
+
+    public PBRecentActivityViewModel getRecentActivityViewModel() {
+        return new PBRecentActivityViewModel(getDataModel());
     }
 }

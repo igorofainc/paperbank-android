@@ -3,8 +3,8 @@ package com.igorofa.paperbank.paperbank.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
@@ -27,7 +27,6 @@ public class FloatingActionButtonWithHintText extends LinearLayout {
     private FloatingActionButton mFloatingActionButton;
 
     private String hintText;
-    private Drawable imageSrcRes;
 
     // OnClickListener for the floating action Button
     PublishSubject<View> hintFabClickListener;
@@ -65,16 +64,18 @@ public class FloatingActionButtonWithHintText extends LinearLayout {
         setOrientation(LinearLayout.HORIZONTAL);
 
         hintText = a.getString(R.styleable.FloatingActionButtonWithHintText_hintText);
-        imageSrcRes = a.getDrawable(R.styleable.FloatingActionButtonWithHintText_srcActionCompat);
+//        imageSrcRes = a.getDrawable(R.styleable.FloatingActionButtonWithHintText_srcActionCompat);
+
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_floating_action_button_with_text, this, true);
 
-//        mHintTextBoxView = (HintTextBoxView) getChildAt(0);
-//        mHintTextBoxView.setHintText(hintText);
+        mHintTextBoxView = (HintTextBoxView) getChildAt(0);
+        mHintTextBoxView.setHintText(hintText);
 
         mFloatingActionButton = (FloatingActionButton) getChildAt(1);
-        mFloatingActionButton.setImageDrawable(imageSrcRes);
+//        mFloatingActionButton.setImageDrawable(imageSrcRes);
+//        mFloatingActionButton.setImageResource(R.styleable.FloatingActionButtonWithHintText_srcActionCompat);
 
         a.recycle();
 
@@ -109,12 +110,7 @@ public class FloatingActionButtonWithHintText extends LinearLayout {
         mHintTextBoxView.setHintText(this.hintText);
     }
 
-    public Drawable getImageSrcRes() {
-        return imageSrcRes;
-    }
-
-    public void setImageSrcRes(Drawable imageSrcRes) {
-        this.imageSrcRes = imageSrcRes;
-        mFloatingActionButton.setImageDrawable(this.imageSrcRes);
+    public void setImageSrcRes(@DrawableRes int drawableRes) {
+        mFloatingActionButton.setImageResource(drawableRes);
     }
 }

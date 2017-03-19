@@ -11,6 +11,11 @@
 
     <declare-styleable name="FloatingActionButtonWithHintText">
         <attr name="hintText" format="string" />
-        <attr name="srcActionCompat" format="integer"/>
+        <attr name="srcActionCompat" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DownloadingForegroundImageView">
+        <attr name="isInDownload" format="boolean"/>
+        <attr name="progress" format="integer" />
     </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 package com.igorofa.paperbank.paperbank.activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.igorofa.paperbank.paperbank.PaperAdapter;
+import com.igorofa.paperbank.paperbank.PaperBankApp;
 import com.igorofa.paperbank.paperbank.R;
+import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityViewModel;
 import com.igorofa.paperbank.paperbank.views.FloatingActionButtonWithHintText;
 import com.igorofa.paperbank.paperbank.views.ToggleFloatingActionButton;
 
@@ -17,6 +21,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.subjects.PublishSubject;
 
 public class PaperBankMainActivity extends AbstractToolbarActivity {
+    private PBMainActivityViewModel mMainActivityViewModel;
 
     // Observer that publishes click events on the fab button
     PublishSubject<View> fabClicksPublish;
@@ -26,6 +31,8 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
     FloatingActionButton uploadFileFloatingActionButton;
     FloatingActionButtonWithHintText recentFilesFloatingActionButton;
 
+    PaperAdapter mPaperAdapter;
+
     @Override
     public int getLayout() {
         return R.layout.activity_main_paper_bank;
@@ -34,6 +41,10 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mMainActivityViewModel = ((PaperBankApp)getApplicationContext()).getMainActivityViewModel();
+
+        mPaperAdapter = new PaperAdapter(this, mMainActivityViewModel);
+        mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null) {
             TextView titleText = (TextView) mToolbar.findViewById(R.id.toolbar_paper_bank_title);
@@ -49,6 +60,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
 
         uploadFileFloatingActionButton = (FloatingActionButton) findViewById(R.id.upload_file_floating_button);
         recentFilesFloatingActionButton = (FloatingActionButtonWithHintText) findViewById(R.id.recent_files_floating_button);
+        recentFilesFloatingActionButton.setImageSrcRes(R.drawable.ic_recent_files); // set image src manually...setting through xml had issues
     }
 
     @Override
@@ -71,6 +83,24 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
                         }
                     }));
         }
+
+        mCompositeDisposable.add(recentFilesFloatingActionButton.getFabOnClickObservable()
+                .subscribe(view -> startActivity(new Intent(PaperBankMainActivity.this, PaperBankFilesActivity.class)))
+        );
+
+//        mCompositeDisposable.add(mPaperAdapter.getItemClickedSubject()
+//                .map(clickedPaper -> mMainActivityViewModel.getFile(clickedPaper))
+//                .subscribe(file -> {
+//                    // tell the view model the paper item has been clicked
+////                    RestService.getInstance().downloadVsSaveFile();
+////                    try {
+////                        File pdf = mMainActivityViewModel.getFile(clickedPaper);
+////                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//////                        intent.setDataAndType(Uri.fromFile(pdf), MimeTypeMap.)
+////                    }catch (FileNotDownloadedException e){
+////                        Log.d(PaperBankMainActivity.class.getSimpleName(), e.getMessage());
+////                    }
+//                }));
     }
 
     private void unbind(){
