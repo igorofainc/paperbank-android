@@ -26,29 +26,27 @@
         app:rippleColor="@color/ripple_fab_color"
         app:srcCompat="@drawable/ic_add_white"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/upload_file_floating_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/mini_fab_margin"
-        android:translationY="@dimen/mini_fab_first_translation_y"
-        app:backgroundTint="@color/fab_color_tint"
-        app:borderWidth="0.5dp"
-        app:elevation="6dp"
-        app:fabSize="mini"
-        app:pressedTranslationZ="12dp"
-        app:rippleColor="@color/ripple_fab_color"
-        app:srcCompat="@drawable/ic_arrow_upward_white_24"/>
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/upload_file_floating_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="end|bottom"-->
+        <!--android:layout_margin="@dimen/mini_fab_margin"-->
+        <!--android:translationY="@dimen/mini_fab_first_translation_y"-->
+        <!--app:backgroundTint="@color/fab_color_tint"-->
+        <!--app:borderWidth="0.5dp"-->
+        <!--app:elevation="6dp"-->
+        <!--app:fabSize="mini"-->
+        <!--app:pressedTranslationZ="12dp"-->
+        <!--app:rippleColor="@color/ripple_fab_color"-->
+        <!--app:srcCompat="@drawable/ic_arrow_upward_white_24"/>-->
 
     <com.igorofa.paperbank.paperbank.views.FloatingActionButtonWithHintText
         android:id="@+id/recent_files_floating_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:paddingRight="4dp"
-        android:paddingLeft="4dp"
-        android:translationY="-120dp"
+        android:translationY="-56dp"
         app:hintText="Files"
         app:srcActionCompat="@drawable/ic_recent_files"/>
 </android.support.design.widget.CoordinatorLayout>

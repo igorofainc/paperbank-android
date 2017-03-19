@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.igorofa.paperbank.paperbank.mock.MockPapers;
 import com.igorofa.paperbank.paperbank.models.ClickedPaper;
 import com.igorofa.paperbank.paperbank.models.Paper;
 import com.igorofa.paperbank.paperbank.viewModels.IViewModel;
@@ -39,10 +38,10 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.PaperViewHol
     IViewModel mViewModel;
     CompositeDisposable mCompositeDisposable;
 
-    public PaperAdapter(Context context, @NonNull IViewModel viewModel) {
+    public PaperAdapter(Context context, @NonNull IViewModel viewModel, List<Paper> papers) {
         super();
 
-        mPapers = MockPapers.setUpMockPapers();
+        mPapers = papers;
         mContext = context;
         mViewModel = viewModel;
 

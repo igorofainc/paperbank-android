@@ -30,7 +30,7 @@ public class PaperBankFilesActivity extends AbstractToolbarActivity {
         super.onCreate(savedInstanceState);
         mRecentActivityViewModel = ((PaperBankApp)getApplicationContext()).getRecentActivityViewModel();
 
-        mPaperAdapter = new PaperAdapter(this, mRecentActivityViewModel);
+        mPaperAdapter = new PaperAdapter(this, mRecentActivityViewModel, mRecentActivityViewModel.getPapers());
         mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null){

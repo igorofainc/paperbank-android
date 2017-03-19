@@ -3,9 +3,6 @@ package com.igorofa.paperbank.paperbank.activities;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +25,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
     CompositeDisposable mCompositeDisposable;
     ToggleFloatingActionButton mainFloatingActionButton;
 
-    FloatingActionButton uploadFileFloatingActionButton;
+//    FloatingActionButton uploadFileFloatingActionButton;
     FloatingActionButtonWithHintText recentFilesFloatingActionButton;
 
     PaperAdapter mPaperAdapter;
@@ -43,7 +40,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
         super.onCreate(savedInstanceState);
         mMainActivityViewModel = ((PaperBankApp)getApplicationContext()).getMainActivityViewModel();
 
-        mPaperAdapter = new PaperAdapter(this, mMainActivityViewModel);
+        mPaperAdapter = new PaperAdapter(this, mMainActivityViewModel,mMainActivityViewModel.getPapers());
         mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null) {
@@ -58,7 +55,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
 
         mainFloatingActionButton = (ToggleFloatingActionButton) findViewById(R.id.floating_button);
 
-        uploadFileFloatingActionButton = (FloatingActionButton) findViewById(R.id.upload_file_floating_button);
+//        uploadFileFloatingActionButton = (FloatingActionButton) findViewById(R.id.upload_file_floating_button);
         recentFilesFloatingActionButton = (FloatingActionButtonWithHintText) findViewById(R.id.recent_files_floating_button);
         recentFilesFloatingActionButton.setImageSrcRes(R.drawable.ic_recent_files); // set image src manually...setting through xml had issues
     }
@@ -75,10 +72,10 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
                     .subscribe(aBoolean -> {
                         if (aBoolean){
                             Toast.makeText(this, "The Fab is Open", Toast.LENGTH_SHORT).show();
-                            uploadFileFloatingActionButton.setVisibility(View.VISIBLE);
+//                            uploadFileFloatingActionButton.setVisibility(View.VISIBLE);
                             recentFilesFloatingActionButton.setVisibility(View.VISIBLE);
                         }else {
-                            uploadFileFloatingActionButton.setVisibility(View.GONE);
+//                            uploadFileFloatingActionButton.setVisibility(View.GONE);
                             recentFilesFloatingActionButton.setVisibility(View.GONE);
                         }
                     }));
@@ -113,26 +110,26 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
         unbind();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_paper_bank_main, menu);
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_paper_bank_main, menu);
+//
+//        return true;
+//    }
 
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }

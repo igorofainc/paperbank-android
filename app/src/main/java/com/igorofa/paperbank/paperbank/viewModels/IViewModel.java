@@ -1,6 +1,9 @@
 package com.igorofa.paperbank.paperbank.viewModels;
 
 import com.igorofa.paperbank.paperbank.models.ClickedPaper;
+import com.igorofa.paperbank.paperbank.models.Paper;
+
+import java.util.List;
 
 import io.reactivex.Completable;
 
@@ -10,4 +13,6 @@ import io.reactivex.Completable;
 
 public interface IViewModel {
     Completable getFile(ClickedPaper paper) ;
+
+    List<Paper> getPapers();
 }

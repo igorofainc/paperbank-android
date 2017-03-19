@@ -4,6 +4,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.igorofa.paperbank.paperbank.PBDataModel;
+import com.igorofa.paperbank.paperbank.mock.MockPapers;
 import com.igorofa.paperbank.paperbank.models.ClickedPaper;
 import com.igorofa.paperbank.paperbank.models.Paper;
 
@@ -80,6 +81,11 @@ public class PBMainActivityViewModel implements IViewModel {
 
                 })
                 .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public List<Paper> getPapers() {
+        return MockPapers.setUpMockPapers();
     }
 
     /**

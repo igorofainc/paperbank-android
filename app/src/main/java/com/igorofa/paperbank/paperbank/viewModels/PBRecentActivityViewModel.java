@@ -3,9 +3,12 @@ package com.igorofa.paperbank.paperbank.viewModels;
 import android.os.Environment;
 
 import com.igorofa.paperbank.paperbank.PBDataModel;
+import com.igorofa.paperbank.paperbank.mock.MockPapers;
 import com.igorofa.paperbank.paperbank.models.ClickedPaper;
+import com.igorofa.paperbank.paperbank.models.Paper;
 
 import java.io.File;
+import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,6 +41,17 @@ public class PBRecentActivityViewModel implements IViewModel{
                 .ignoreElements();
     }
 
+    @Override
+    public List<Paper> getPapers() {
+        List<Paper> paperList = MockPapers.setUpMockPapers();
+
+        for (Paper paper:paperList) {
+            if (paper.getLocalFileUrl() == null){
+                paperList.remove(paper);
+            }
+        }
+        return paperList;
+    }
 
 
     private File createFile(long paperId){

@@ -15,6 +15,8 @@ import android.view.View;
 
 import com.igorofa.paperbank.paperbank.R;
 
+import static android.R.attr.startY;
+
 /**
  * Created by laz on 13/03/17.
  */
@@ -71,7 +73,7 @@ public class HintTextBoxView extends View {
             hintText = atp.getString(R.styleable.HintTextBoxView_text);
         }
         if (atp.hasValue(R.styleable.HintTextBoxView_textSize)){
-            textSize = atp.getDimensionPixelSize(R.styleable.HintTextBoxView_textSize, (int) defaultTextSize);
+            textSize = atp.getDimensionPixelSize(R.styleable.HintTextBoxView_textSize, Math.round(defaultTextSize));
         }else {
             textSize = defaultTextSize;
         }
@@ -81,7 +83,7 @@ public class HintTextBoxView extends View {
         hintTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         hintTextPaint.setColor(Color.WHITE);
         hintTextPaint.setTextSize(textSize);
-        hintTextPaint.setTextAlign(Paint.Align.CENTER);
+//        hintTextPaint.setTextAlign(Paint.Align.CENTER);
 
         mRadius = DEFAULT_RECT_RADIUS * context.getResources().getDisplayMetrics().density;
 
@@ -113,7 +115,7 @@ public class HintTextBoxView extends View {
         float textWidth = hintTextPaint.measureText(hintText);
         float textHeight = hintTextPaint.getFontMetrics().bottom + hintTextPaint.getFontMetrics().top * -1;
 
-        float width = textWidth + paddingWidth;
+        float width = textWidth * 2 + paddingWidth;
         float height = textHeight + paddingHeight;
 
         setMeasuredDimension(resolveSize((int) width, widthMeasureSpec), resolveSize((int) height, heightMeasureSpec));
@@ -123,8 +125,11 @@ public class HintTextBoxView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 //        float startX = padding_left_px;
-        float startX = padding_left_px + getPaddingLeft() + hintTextPaint.measureText(hintText) * 0.5f;
+//        float startX = padding_left_px + getPaddingLeft() + hintTextPaint.measureText(hintText) * 0.5f;
         float startY =  padding_top_px + getPaddingTop() + hintTextPaint.getFontMetrics().ascent * -1;
+
+        float startX = (canvas.getWidth() * 0.5f) - (hintTextPaint.measureText(hintText) * 0.5f);
+//        float startY= canvas.getHeight() * 0.6f;
 
         canvas.drawText(hintText, startX, startY, hintTextPaint);
     }
