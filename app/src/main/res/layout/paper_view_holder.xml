@@ -58,7 +58,6 @@
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:padding="16dp"
             app:isInDownload="false"
-            app:progress="20"
             app:srcCompat="@drawable/ic_paper"/>
     </FrameLayout>
 

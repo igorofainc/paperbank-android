@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -34,6 +35,7 @@ public class RestService {
     //    private final String TEST_PDF_URL = "http://www.pdf995.com/samples/pdf.pdf";
 //    private final String TEST_PDF_URL = "http://www.google.com";
     private final String BASE_URL = "http://paperdev.herokuapp.com/";
+    Scheduler mScheduler;
 
     private RestService() {
 
@@ -151,6 +153,7 @@ public class RestService {
                 .downloadPdfFile(url)
                 .subscribeOn(Schedulers.io())
                 .flatMap(bodyResponse -> saveWholeFile(bodyResponse, file))
+                .map(file1 -> Log.d(Thread.currentThread().getName(), file.getAbsolutePath())) // purely for testing file download is on what thread
                 .ignoreElements()
                 .observeOn(AndroidSchedulers.mainThread());
     }
