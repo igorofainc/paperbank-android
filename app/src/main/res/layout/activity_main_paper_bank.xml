@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:translationY="-56dp"
+        android:translationY="-72dp"
         app:hintText="Files"
         app:srcActionCompat="@drawable/ic_recent_files"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#AC1356</color>
-    <color name="colorPrimaryDark">#19AC1356</color>
+    <color name="colorPrimaryDark">#611235</color>
     <color name="colorAccent">#ab1566</color>
 
     <color name="fab_color_tint">#FFAC1356</color>
