@@ -1,31 +1,44 @@
 package com.igorofa.paperbank.paperbank.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Generated;
+
 /**
  * Created by x4b1d on 22/02/17.
  */
 
-public class Paper {
-    long id;
+@Entity
+public final class Paper {
 
-    private String paperTitle;
-    private String paperTag;
-    private boolean hasBeenSaved;
-    private String onlinePaperLink;
-    private String localFileUrl;
+    @Id
+    private long id;
 
-    public Paper(long id, String paperTitle, String paperTag, String onlinePaperLink) {
+    @SerializedName("id")
+    @Expose
+    private Integer paperId;
+
+    @SerializedName("name")
+    @Expose
+    private String name;
+
+    @SerializedName("paper_file")
+    @Expose
+    private String paperFile;
+
+    @Generated(hash = 147105847)
+    public Paper(long id, Integer paperId, String name, String paperFile) {
         this.id = id;
-        this.paperTitle = paperTitle;
-        this.paperTag = paperTag;
-        this.onlinePaperLink = onlinePaperLink;
+        this.paperId = paperId;
+        this.name = name;
+        this.paperFile = paperFile;
     }
 
-    public Paper(long id, String paperTitle, String paperTag, boolean hasBeenSaved, String onlinePaperLink) {
-        this.id = id;
-        this.paperTitle = paperTitle;
-        this.paperTag = paperTag;
-        this.hasBeenSaved = hasBeenSaved;
-        this.onlinePaperLink = onlinePaperLink;
+    @Generated(hash = 891627928)
+    public Paper() {
     }
 
     public long getId() {
@@ -36,43 +49,28 @@ public class Paper {
         this.id = id;
     }
 
-    public String getPaperTitle() {
-        return paperTitle;
+    public Integer getPaperId() {
+        return paperId;
     }
 
-    public void setPaperTitle(final String paperTitle) {
-        this.paperTitle = paperTitle;
+    public void setPaperId(Integer paperId) {
+        this.paperId = paperId;
     }
 
-    public String getPaperTag() {
-        return paperTag;
+    public String getName() {
+        return name;
     }
 
-    public void setPaperTag(final String paperTag) {
-        this.paperTag = paperTag;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean isHasBeenSaved() {
-        return hasBeenSaved;
+    public String getPaperFile() {
+        return paperFile;
     }
 
-    public void setHasBeenSaved(final boolean hasBeenSaved) {
-        this.hasBeenSaved = hasBeenSaved;
+    public void setPaperFile(String paperFile) {
+        this.paperFile = paperFile;
     }
 
-    public void setOnlinePaperLink(String onlinePaperLink) {
-        this.onlinePaperLink = onlinePaperLink;
-    }
-
-    public String getOnlinePaperLink() {
-        return onlinePaperLink;
-    }
-
-    public String getLocalFileUrl() {
-        return localFileUrl;
-    }
-
-    public void setLocalFileUrl(String localFileUrl) {
-        this.localFileUrl = localFileUrl;
-    }
 }

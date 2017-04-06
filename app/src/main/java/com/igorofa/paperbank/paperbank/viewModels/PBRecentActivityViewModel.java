@@ -2,7 +2,6 @@ package com.igorofa.paperbank.paperbank.viewModels;
 
 import android.os.Environment;
 
-import com.igorofa.paperbank.paperbank.PBDataModel;
 import com.igorofa.paperbank.paperbank.mock.MockPapers;
 import com.igorofa.paperbank.paperbank.models.ClickedPaper;
 import com.igorofa.paperbank.paperbank.models.Paper;
@@ -11,8 +10,6 @@ import java.io.File;
 import java.util.List;
 
 import io.reactivex.Completable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by laz on 14/03/17.
@@ -22,11 +19,9 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class PBRecentActivityViewModel implements IViewModel{
-    private PBDataModel mPBDataModel;
 
+    public PBRecentActivityViewModel() {
 
-    public PBRecentActivityViewModel(PBDataModel pbDataModel) {
-        mPBDataModel = pbDataModel;
     }
 
 
@@ -34,22 +29,15 @@ public class PBRecentActivityViewModel implements IViewModel{
     public Completable getFile(ClickedPaper paper) {
         File file = createFile(paper.getPaper().getId());
 
-        return mPBDataModel.doesTheFileExist(file)
-                .subscribeOn(Schedulers.io())
-                .map(PBDataModel.FileExists::getFile)
-                .observeOn(AndroidSchedulers.mainThread())
-                .ignoreElements();
+        return Completable.complete(); // TODO
     }
 
     @Override
     public List<Paper> getPapers() {
         List<Paper> paperList = MockPapers.setUpMockPapers();
 
-        for (Paper paper:paperList) {
-            if (paper.getLocalFileUrl() == null){
-                paperList.remove(paper);
-            }
-        }
+        assert paperList != null;
+
         return paperList;
     }
 

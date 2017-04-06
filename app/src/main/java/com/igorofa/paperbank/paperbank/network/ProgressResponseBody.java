@@ -1,6 +1,8 @@
 package com.igorofa.paperbank.paperbank.network;
 
-import io.reactivex.subjects.PublishSubject;
+import android.support.annotation.Nullable;
+
+import io.reactivex.subjects.Subject;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import okio.Buffer;
@@ -15,10 +17,10 @@ import okio.Source;
 
 class ProgressResponseBody extends ResponseBody {
     private ResponseBody responseBody;
-    private PublishSubject<Integer> progressListener;
+    private Subject<Integer> progressListener;
     private BufferedSource bufferedSource;
 
-    ProgressResponseBody(ResponseBody body, PublishSubject<Integer> tracker) {
+    ProgressResponseBody(ResponseBody body, @Nullable Subject<Integer> tracker) {
         responseBody = body;
         progressListener = tracker;
     }
@@ -50,9 +52,13 @@ class ProgressResponseBody extends ResponseBody {
                 long bytesRead = super.read(sink, byteCount);
                 // read() returns the number of bytes read, or -1 if this source is exhausted.
                 totalBytesRead += bytesRead != -1 ? bytesRead : 0;
-                progressListener.onNext((int) (100 * ((double)totalBytesRead / contentLength())));
+
+                if (progressListener != null) {
+                    progressListener.onNext((int) (100 * ((double) totalBytesRead / contentLength())));
 //                Log.d(ProgressResponseBody.class.getSimpleName(), " " + totalBytesRead);
 //                Log.d(ProgressResponseBody.class.getSimpleName(), " " + totalBytesRead / contentLength());
+                }
+
                 return bytesRead;
             }
         };
