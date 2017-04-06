@@ -1,6 +1,5 @@
 package com.igorofa.paperbank.paperbank;
 
-import com.igorofa.paperbank.paperbank.models.PapersDataBaseWrapper;
 import com.igorofa.paperbank.paperbank.network.PaperBankFileDownloadService;
 
 import org.junit.After;
@@ -72,12 +71,12 @@ public class ExampleUnitTest {
 
     @Test
     public void testFileCreate(){
-        PapersDataBaseWrapper papersDataBaseWrapper = new PapersDataBaseWrapper();
-        String title = "S6 Physics 2016";
-
-        String result = papersDataBaseWrapper.createFileDate(title);
-
-        System.out.println(result);
+//        PapersDataBaseWrapper papersDataBaseWrapper = PapersDataBaseWrapper.getThePaperBankDataBaseWrapper();
+//        String title = "S6 Physics 2016";
+//
+//        String result = papersDataBaseWrapper.createFileDate(title);
+//
+//        System.out.println(result);
     }
 
     @After

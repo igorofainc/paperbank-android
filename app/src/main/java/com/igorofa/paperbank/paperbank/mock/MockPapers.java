@@ -24,10 +24,10 @@ public class MockPapers {
 
         for (int i = 0; i < 5; i++) {
             long paperId = 0l;
-            Paper newPaper = new Paper(paperId, "S6 Physics 2017", "#Physics", TEST_PDF_URL);
+            Paper newPaper = new Paper(/*paperId, "S6 Physics 2017", "#Physics", TEST_PDF_URL*/);
             File file = createFile(paperId);
             if (file.exists()){
-                newPaper.setLocalFileUrl(file.getAbsolutePath());
+//                newPaper.setLocalFileUrl(file.getAbsolutePath());
             }
             paperList.add(newPaper);
         }

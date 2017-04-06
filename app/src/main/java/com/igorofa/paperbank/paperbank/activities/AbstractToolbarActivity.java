@@ -10,12 +10,15 @@ import android.support.v7.widget.Toolbar;
 
 import com.igorofa.paperbank.paperbank.R;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 /**
  * This is abstract activity class that sets up the toolbar and recyclerview for their child classes
  * Created by laz on 9/03/17.
  */
 
 public abstract class AbstractToolbarActivity extends AppCompatActivity {
+    CompositeDisposable mCompositeDisposable;
 
     /**
      * Child activities that extend this abstract class have to implement this method
@@ -46,6 +49,17 @@ public abstract class AbstractToolbarActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.paper_bank_main_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        mCompositeDisposable = new CompositeDisposable();
+
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbind();
+    }
+
+    private void unbind(){
+        mCompositeDisposable.clear();
+    }
 }

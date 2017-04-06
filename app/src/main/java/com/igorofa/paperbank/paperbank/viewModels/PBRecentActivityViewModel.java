@@ -1,15 +1,10 @@
 package com.igorofa.paperbank.paperbank.viewModels;
 
-import android.os.Environment;
-
-import com.igorofa.paperbank.paperbank.mock.MockPapers;
-import com.igorofa.paperbank.paperbank.models.ClickedPaper;
 import com.igorofa.paperbank.paperbank.models.Paper;
 
-import java.io.File;
 import java.util.List;
 
-import io.reactivex.Completable;
+import io.reactivex.Single;
 
 /**
  * Created by laz on 14/03/17.
@@ -24,27 +19,8 @@ public class PBRecentActivityViewModel implements IViewModel{
 
     }
 
-
     @Override
-    public Completable getFile(ClickedPaper paper) {
-        File file = createFile(paper.getPaper().getId());
-
-        return Completable.complete(); // TODO
-    }
-
-    @Override
-    public List<Paper> getPapers() {
-        List<Paper> paperList = MockPapers.setUpMockPapers();
-
-        assert paperList != null;
-
-        return paperList;
-    }
-
-
-    private File createFile(long paperId){
-        String fileName = Long.toHexString(paperId).concat(".pdf");
-
-        return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+    public Single<List<Paper>> getPapers() {
+        return null;
     }
 }

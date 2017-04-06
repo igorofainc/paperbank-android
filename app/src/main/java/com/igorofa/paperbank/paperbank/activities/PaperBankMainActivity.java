@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.igorofa.paperbank.paperbank.PaperAdapter;
+import com.igorofa.paperbank.paperbank.adapters.PaperMainViewAdapter;
 import com.igorofa.paperbank.paperbank.PaperBankApp;
 import com.igorofa.paperbank.paperbank.R;
 import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityViewModel;
@@ -29,13 +29,12 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
 
     // Observer that publishes click events on the fab button
     PublishSubject<View> fabClicksPublish;
-    CompositeDisposable mCompositeDisposable;
     ToggleFloatingActionButton mainFloatingActionButton;
 
 //    FloatingActionButton uploadFileFloatingActionButton;
     FloatingActionButtonWithHintText recentFilesFloatingActionButton;
 
-    PaperAdapter mPaperAdapter;
+    PaperMainViewAdapter mPaperAdapter;
 
     @Override
     public int getLayout() {
@@ -49,7 +48,7 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
 
         mMainActivityViewModel = ((PaperBankApp)getApplicationContext()).getMainActivityViewModel();
 
-        mPaperAdapter = new PaperAdapter(this, mMainActivityViewModel,mMainActivityViewModel.getPapers());
+        mPaperAdapter = new PaperMainViewAdapter();
         mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null) {
@@ -100,29 +99,6 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
                 .subscribe(view -> startActivity(new Intent(PaperBankMainActivity.this, PaperBankFilesActivity.class)))
         );
 
-//        mCompositeDisposable.add(mPaperAdapter.getItemClickedSubject()
-//                .map(clickedPaper -> mMainActivityViewModel.getFile(clickedPaper))
-//                .subscribe(file -> {
-//                    // tell the view model the paper item has been clicked
-////                    RestService.getInstance().downloadVsSaveFile();
-////                    try {
-////                        File pdf = mMainActivityViewModel.getFile(clickedPaper);
-////                        Intent intent = new Intent(Intent.ACTION_VIEW);
-//////                        intent.setDataAndType(Uri.fromFile(pdf), MimeTypeMap.)
-////                    }catch (FileNotDownloadedException e){
-////                        Log.d(PaperBankMainActivity.class.getSimpleName(), e.getMessage());
-////                    }
-//                }));
-    }
-
-    private void unbind(){
-        mCompositeDisposable.clear();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbind();
     }
 
 //    @Override

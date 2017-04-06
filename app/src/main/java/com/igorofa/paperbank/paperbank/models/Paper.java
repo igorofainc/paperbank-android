@@ -1,10 +1,15 @@
 package com.igorofa.paperbank.paperbank.models;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Index;
 import io.objectbox.annotation.Generated;
 
 /**
@@ -19,26 +24,32 @@ public final class Paper {
 
     @SerializedName("id")
     @Expose
+    @Index
     private Integer paperId;
 
     @SerializedName("name")
     @Expose
+    @Index
     private String name;
 
     @SerializedName("paper_file")
     @Expose
     private String paperFile;
 
-    @Generated(hash = 147105847)
-    public Paper(long id, Integer paperId, String name, String paperFile) {
+    private Date datePaper;
+
+    @Generated(hash = 891627928)
+    public Paper() {
+    }
+
+    @Generated(hash = 1848883383)
+    public Paper(long id, Integer paperId, String name, String paperFile,
+            Date datePaper) {
         this.id = id;
         this.paperId = paperId;
         this.name = name;
         this.paperFile = paperFile;
-    }
-
-    @Generated(hash = 891627928)
-    public Paper() {
+        this.datePaper = datePaper;
     }
 
     public long getId() {
@@ -53,7 +64,7 @@ public final class Paper {
         return paperId;
     }
 
-    public void setPaperId(Integer paperId) {
+    public void setPaperId(@NonNull Integer paperId) {
         this.paperId = paperId;
     }
 
@@ -61,7 +72,7 @@ public final class Paper {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
@@ -69,8 +80,16 @@ public final class Paper {
         return paperFile;
     }
 
-    public void setPaperFile(String paperFile) {
+    public void setPaperFile(@NonNull String paperFile) {
         this.paperFile = paperFile;
+    }
+
+    public Date getDatePaper() {
+        return datePaper;
+    }
+
+    public void setDatePaper(@NonNull Date datePaper) {
+        this.datePaper = datePaper;
     }
 
 }

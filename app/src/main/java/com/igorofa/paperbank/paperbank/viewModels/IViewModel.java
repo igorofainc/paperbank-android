@@ -1,18 +1,22 @@
 package com.igorofa.paperbank.paperbank.viewModels;
 
-import com.igorofa.paperbank.paperbank.models.ClickedPaper;
+import android.support.annotation.NonNull;
+
 import com.igorofa.paperbank.paperbank.models.Paper;
 
 import java.util.List;
 
-import io.reactivex.Completable;
+import io.reactivex.Single;
 
 /**
  * Created by laz on 18/03/17.
  */
 
 public interface IViewModel {
-    Completable getFile(ClickedPaper paper) ;
 
-    List<Paper> getPapers();
+    Single<List<Paper>> getPapers();
+
+    public interface IViewHolderVModel{
+        Single<String> getFilePath(@NonNull long paperId);
+    }
 }

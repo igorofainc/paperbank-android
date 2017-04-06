@@ -1,5 +1,7 @@
 package com.igorofa.paperbank.paperbank.network;
 
+import com.igorofa.paperbank.paperbank.models.Paper;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -23,5 +25,5 @@ interface PaperBankApi {
     Observable <Response<ResponseBody>> downloadPdfFile(@Url HttpUrl resourceUrl);
 
     @GET("papers")
-    <T> Single<List<T>> getPapers();
+     Single<List<Paper>> getPapers();
 }

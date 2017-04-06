@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:4242567624344655188",
-      "lastPropertyId": "5:1452707047623308868",
+      "lastPropertyId": "4:7856648090507508265",
       "name": "Paper",
       "properties": [
         {
@@ -25,10 +25,6 @@
         {
           "id": "4:7856648090507508265",
           "name": "paperFile"
-        },
-        {
-          "id": "5:1452707047623308868",
-          "name": "datePaper"
         }
       ]
     }
