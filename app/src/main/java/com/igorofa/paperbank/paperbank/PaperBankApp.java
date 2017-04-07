@@ -4,8 +4,8 @@ import android.app.Application;
 import android.os.SystemClock;
 
 import com.igorofa.paperbank.paperbank.models.PapersDataBaseWrapper;
-import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityViewModel;
-import com.igorofa.paperbank.paperbank.viewModels.PBRecentActivityViewModel;
+import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityAdapterViewModel;
+import com.igorofa.paperbank.paperbank.viewModels.PBRecentActivityAdapterViewModel;
 import com.squareup.leakcanary.LeakCanary;
 
 import java.util.concurrent.TimeUnit;
@@ -37,11 +37,11 @@ public final class PaperBankApp extends Application {
     }
 
 
-    public PBMainActivityViewModel getMainActivityViewModel() {
-        return new PBMainActivityViewModel();
+    public PBMainActivityAdapterViewModel getMainActivityViewModel() {
+        return new PBMainActivityAdapterViewModel();
     }
 
-    public PBRecentActivityViewModel getRecentActivityViewModel() {
-        return new PBRecentActivityViewModel();
+    public PBRecentActivityAdapterViewModel getRecentActivityViewModel() {
+        return new PBRecentActivityAdapterViewModel();
     }
 }

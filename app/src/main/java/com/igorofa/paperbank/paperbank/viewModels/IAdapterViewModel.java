@@ -12,11 +12,9 @@ import io.reactivex.Single;
  * Created by laz on 18/03/17.
  */
 
-public interface IViewModel {
+public interface IAdapterViewModel {
 
     Single<List<Paper>> getPapers();
 
-    public interface IViewHolderVModel{
-        Single<String> getFilePath(@NonNull long paperId);
-    }
+    Single<String> getFilePath(@NonNull long paperId);
 }

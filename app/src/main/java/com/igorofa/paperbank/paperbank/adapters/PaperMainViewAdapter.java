@@ -7,15 +7,47 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.igorofa.paperbank.paperbank.models.Paper;
+import com.igorofa.paperbank.paperbank.viewModels.IAdapterViewModel;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 
 /**
  * Created by x4b1d on 22/02/17.
  */
 
-public class PaperMainViewAdapter extends RecyclerView.Adapter<PaperMainViewAdapter.PaperViewHolder>
-        implements IPaperBankAdapter{
+public class PaperMainViewAdapter extends RecyclerView.Adapter<PaperMainViewAdapter.PaperViewHolder> {
+
+    List<Paper> mPapers = new ArrayList<>();
+
+    final IAdapterViewModel mHolderVModel;
+    final CompositeDisposableWrapper mDisposableWrapper;
+    final CompositeDisposable mCompositeDisposable;
+
+    public PaperMainViewAdapter(IAdapterViewModel adapter_view_model){
+
+        mHolderVModel = adapter_view_model;
+        mDisposableWrapper = new CompositeDisposableWrapper();
+        mCompositeDisposable = mDisposableWrapper.getM_COMPOSITE_DISPOSABLE();
+
+        setPapersSubscription();
+    }
+
+    private void setPapersSubscription(){
+        mCompositeDisposable.add(mHolderVModel.getPapers()
+        .doOnSuccess(papers -> {
+            if (!mPapers.isEmpty()) {
+                mPapers = papers;
+                notifyDataSetChanged();
+            }else mPapers = papers;
+        })
+        .subscribe());
+    }
 
     @Override
     public PaperViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,11 +64,9 @@ public class PaperMainViewAdapter extends RecyclerView.Adapter<PaperMainViewAdap
         return 0;
     }
 
-    @Override
     public void release() {
-        M_COMPOSITE_DISPOSABLE.clear();
+        mDisposableWrapper.release();
     }
-
 
     class PaperViewHolder extends RecyclerView.ViewHolder {
 

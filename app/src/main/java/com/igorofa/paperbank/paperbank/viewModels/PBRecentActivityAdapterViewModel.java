@@ -1,5 +1,7 @@
 package com.igorofa.paperbank.paperbank.viewModels;
 
+import android.support.annotation.NonNull;
+
 import com.igorofa.paperbank.paperbank.models.Paper;
 
 import java.util.List;
@@ -13,14 +15,19 @@ import io.reactivex.Single;
  * the view to display error
  */
 
-public class PBRecentActivityViewModel implements IViewModel{
+public class PBRecentActivityAdapterViewModel implements IAdapterViewModel {
 
-    public PBRecentActivityViewModel() {
+    public PBRecentActivityAdapterViewModel() {
 
     }
 
     @Override
     public Single<List<Paper>> getPapers() {
+        return null;
+    }
+
+    @Override
+    public Single<String> getFilePath(@NonNull long paperId) {
         return null;
     }
 }

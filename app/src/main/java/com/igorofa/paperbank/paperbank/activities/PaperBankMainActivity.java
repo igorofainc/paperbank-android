@@ -13,10 +13,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.igorofa.paperbank.paperbank.adapters.PaperMainViewAdapter;
-import com.igorofa.paperbank.paperbank.PaperBankApp;
 import com.igorofa.paperbank.paperbank.R;
-import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityViewModel;
+import com.igorofa.paperbank.paperbank.adapters.PaperMainViewAdapter;
+import com.igorofa.paperbank.paperbank.viewModels.PBMainActivityAdapterViewModel;
 import com.igorofa.paperbank.paperbank.views.FloatingActionButtonWithHintText;
 import com.igorofa.paperbank.paperbank.views.ToggleFloatingActionButton;
 
@@ -25,7 +24,7 @@ import io.reactivex.subjects.PublishSubject;
 
 public class PaperBankMainActivity extends AbstractToolbarActivity {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
-    private PBMainActivityViewModel mMainActivityViewModel;
+    private PBMainActivityAdapterViewModel mMainActivityViewModel;
 
     // Observer that publishes click events on the fab button
     PublishSubject<View> fabClicksPublish;
@@ -46,9 +45,9 @@ public class PaperBankMainActivity extends AbstractToolbarActivity {
         super.onCreate(savedInstanceState);
         showRequestPermission();
 
-        mMainActivityViewModel = ((PaperBankApp)getApplicationContext()).getMainActivityViewModel();
+        mMainActivityViewModel = new PBMainActivityAdapterViewModel();
 
-        mPaperAdapter = new PaperMainViewAdapter();
+        mPaperAdapter = new PaperMainViewAdapter(mMainActivityViewModel);
         mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null) {

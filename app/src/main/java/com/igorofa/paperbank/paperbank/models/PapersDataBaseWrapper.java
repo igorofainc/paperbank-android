@@ -12,6 +12,7 @@ import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -76,15 +77,18 @@ public final class PapersDataBaseWrapper {
     }
 
     public Completable storeToDataBase(@NonNull List<Paper> paperItems){
-        Completable storeCompletable =  Completable.fromAction(() -> paperBox.put(paperItems));
+//        Completable storeCompletable =  Completable.fromAction(() -> paperBox.put(paperItems));
 
         // set the date of each paper to the current date and then put in database
-        return Completable.fromAction(() -> {
-            for (Paper paper: paperItems) {
-                paper.setDatePaper(new Date(System.currentTimeMillis()));
-            }
-        })
-                .andThen(storeCompletable);
+        Observable<Paper> paperObservable = Observable.fromIterable(paperItems)
+                .map(paper -> {
+                    paper.setDatePaper(new Date(System.currentTimeMillis()));
+                    return paper;
+                });
+
+        return paperObservable
+                .toList()
+                .flatMapCompletable(papers -> Completable.fromAction(() -> paperBox.put(papers)));
     }
 
     public QueryBuilder<Paper> getPaperQueryBuilder() {

@@ -4,19 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import com.igorofa.paperbank.paperbank.PaperBankApp;
 import com.igorofa.paperbank.paperbank.R;
-import com.igorofa.paperbank.paperbank.adapters.PaperMainViewAdapter;
-import com.igorofa.paperbank.paperbank.viewModels.PBRecentActivityViewModel;
+import com.igorofa.paperbank.paperbank.adapters.PaperRecentFilesAdapter;
+import com.igorofa.paperbank.paperbank.viewModels.IAdapterViewModel;
+import com.igorofa.paperbank.paperbank.viewModels.PBRecentActivityAdapterViewModel;
 
 /**
  * Created by laz on 25/02/17.
  */
 
 public class PaperBankFilesActivity extends AbstractToolbarActivity {
-    private PBRecentActivityViewModel mRecentActivityViewModel;
+    private PBRecentActivityAdapterViewModel mRecentActivityViewModel;
 
-    PaperMainViewAdapter mPaperAdapter;
+    PaperRecentFilesAdapter mPaperAdapter;
+
     @Override
     public int getLayout() {
         return R.layout.activity_files_paper_bank;
@@ -25,9 +26,11 @@ public class PaperBankFilesActivity extends AbstractToolbarActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRecentActivityViewModel = ((PaperBankApp)getApplicationContext()).getRecentActivityViewModel();
+        mRecentActivityViewModel = new PBRecentActivityAdapterViewModel();
 
-        mPaperAdapter = new PaperMainViewAdapter();
+        IAdapterViewModel adapterViewModel = mRecentActivityViewModel;
+
+        mPaperAdapter = new PaperRecentFilesAdapter(adapterViewModel);
         mRecyclerView.setAdapter(mPaperAdapter);
 
         if (getSupportActionBar() != null){
